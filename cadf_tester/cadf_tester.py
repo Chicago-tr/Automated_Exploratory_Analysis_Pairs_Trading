@@ -71,7 +71,7 @@ def run_ols(close_df, symbol, symbol2):
 
 
     close_df['Residuals'] = results.resid
-    return close_df
+    return close_df, coef
 
 
 def create_cadf(close_df):
@@ -122,7 +122,9 @@ def cadf_analysis(path, symbols):
 
                 price_df = create_df(path, csv_tup)
 
-                residuals = run_ols(price_df, symbol, symbol2)
+                residuals, coef = run_ols(price_df, symbol, symbol2)
+
+                csv_tup = (symbol, symbol2, coef)       #Add the hedge ratio
 
                 cadf = create_cadf(residuals)
 
