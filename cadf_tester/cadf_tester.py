@@ -21,13 +21,15 @@ def create_df(path, symbols):
 
     first_df = pd.read_csv(os.path.join(path, symbols[0]),index_col=0,parse_dates=True)
     first_df = first_df.replace({'\$':''}, regex = True)
+    first_df = first_df.sort_values(by='timestamp')
 
 
     second_df = pd.read_csv(os.path.join(path, symbols[1]),index_col=0,parse_dates=True)
     second_df = second_df.replace({'\$':''}, regex = True)
+    second_df = second_df.sort_values(by='timestamp')
 
 
-    close_data = [first_df['Close/Last'].astype(float), second_df['Close/Last'].astype(float)]
+    close_data = [first_df['close'].astype(float), second_df['close'].astype(float)]
 
 
 
