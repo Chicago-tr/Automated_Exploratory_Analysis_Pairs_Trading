@@ -5,6 +5,7 @@
 from matplotlib.backends.backend_pdf import PdfPages
 import matplotlib.pyplot as plt
 import cadf_tester as ct
+import api_to_csv
 import pandas as pd
 import numpy as np
 import os
@@ -100,7 +101,18 @@ def create_plots(pairs_dictionary):
 
 if __name__ == '__main__':
 
-    csv_path = 'PATH HERE'
+    symbols_list = ['XOM','CVX', 'COP', 'EOG', 'OXY', 'TTE', 'BP', 'SHEL', 'ENB',
+                    'HES', 'VLO', 'DVN']
+
+    key= "KEY HERE"      #api key
+
+    #Downloading datasets
+    api_to_csv.dailydata_csv(symbols_list, key)
+
+
+    csv_path = "PATH HERE"
+
+
     symbols = ['DVN_daily','VLO_daily','HES_daily',
                 'ENB_daily','SHEL_daily','BP_daily','TTE_daily',
                 'OXY_daily','EOG_daily','COP_daily','CVX_daily','XOM_daily']
