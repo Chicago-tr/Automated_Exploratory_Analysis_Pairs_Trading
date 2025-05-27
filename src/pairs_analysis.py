@@ -60,24 +60,15 @@ def create_zscore(spread):
 
     return (spread - spread.mean())/ np.std(spread)
 
-
-
-if __name__ == '__main__':
-
-    csv_path = 'PATH HERE'
-    symbols = ['DVN_daily','VLO_daily','HES_daily',
-                'ENB_daily','SHEL_daily','BP_daily','TTE_daily',
-                'OXY_daily','EOG_daily','COP_daily','CVX_daily','XOM_daily']
-
-
-    cadf_results = ct.cadf_analysis(csv_path, symbols)
-
-    one_percent_results = cadf_results[0]
-
+def create_plots(pairs_dictionary):
+    """
+    Parameters
+    ----------
+    pairs_dictionary : A dictionary of cadf pairs/results provided by the
+    cadf_analysis function from cadf_tester
+    """
     #We'll take just the pairs and their hedge ratios
-    pairs = list(one_percent_results.keys())
-
-    pairs_copy = pairs[:]
+    pairs = list(pairs_dictionary.keys())
     plots = []
 
     for i in range(len(pairs)):
@@ -104,3 +95,19 @@ if __name__ == '__main__':
     with PdfPages('Pairs_Analysis_Results.pdf') as pdf:
         for plot in plots:
             pdf.savefig(plot, bbox_inches='tight')
+
+
+
+if __name__ == '__main__':
+
+    csv_path = 'PATH HERE'
+    symbols = ['DVN_daily','VLO_daily','HES_daily',
+                'ENB_daily','SHEL_daily','BP_daily','TTE_daily',
+                'OXY_daily','EOG_daily','COP_daily','CVX_daily','XOM_daily']
+
+
+    cadf_results = ct.cadf_analysis(csv_path, symbols)
+
+    one_percent_results = cadf_results[0]
+
+    create_plots(one_percent_results)
