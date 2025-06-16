@@ -2,7 +2,3 @@
 A few scripts for automating exploratory data analysis for pairs trading. First a list of desired stock tickers is provided to the AlphavantageAPi_to_CSV script, [which can be found here](https://github.com/Chicago-tr/AlphavantageApi_to_CSVfile), to save a large number of csv data files. [Cadf_tester.py](https://github.com/Chicago-tr/Cointegrated-Series-Tester/blob/main/cadf_tester/cadf_tester.py) will then test all combinations of pairs for cointegration using the CADF test. Statistically significant results/pairs are saved to dictionaries and printed along with a hedge ratio. Three dictionaries are used for significance levels (alpha levels) corresponding to 1%, 5%, and 10%. Pairs are only saved in their level of highest confidence.
 
 The pairs_analysis.py script will then calculate running z-scores for each pair in a chosen dictionary. Each pair's scores over time are plotted and added to a pdf file containing all the plots, which is then saved in the same directory as the script. 
-
-
-
-File organization and README to be completed soon.
